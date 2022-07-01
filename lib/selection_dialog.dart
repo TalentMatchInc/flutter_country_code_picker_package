@@ -75,12 +75,14 @@ class _SelectionDialogState extends State<SelectionDialog> {
           decoration: widget.boxDecoration ??
               BoxDecoration(
                 color: widget.backgroundColor ?? Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8.0),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: widget.barrierColor ?? Colors.grey.withOpacity(1),
-                    spreadRadius: 5,
-                    blurRadius: 7,
+                    spreadRadius: 1,
+                    blurRadius: 1,
                     offset: Offset(0, 3), // changes position of shadow
                   ),
                 ],
@@ -157,7 +159,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                   widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
               child: Image.asset(
                 e.flagUri!,
-                // package: 'country_code_picker',
+                package: 'country_code_picker',
                 width: widget.flagWidth,
               ),
             ),
