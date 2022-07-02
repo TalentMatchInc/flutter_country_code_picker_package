@@ -106,40 +106,40 @@ class _SelectionDialogState extends State<SelectionDialog> {
                     onChanged: _filterElements,
                   ),
                 ),
-              ListView(
-                shrinkWrap: true,
-                primary: false,
-                children: [
-                  widget.favoriteElements.isEmpty
-                      ? const DecoratedBox(decoration: BoxDecoration())
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ...widget.favoriteElements.map(
-                              (f) => SimpleDialogOption(
-                                child: _buildOption(f),
-                                onPressed: () {
-                                  _selectItem(f);
-                                },
+              Expanded(
+                child: ListView(
+                  children: [
+                    widget.favoriteElements.isEmpty
+                        ? const DecoratedBox(decoration: BoxDecoration())
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ...widget.favoriteElements.map(
+                                (f) => SimpleDialogOption(
+                                  child: _buildOption(f),
+                                  onPressed: () {
+                                    _selectItem(f);
+                                  },
+                                ),
                               ),
-                            ),
-                            const Divider(),
-                          ],
+                              const Divider(),
+                            ],
+                          ),
+                    if (filteredElements.isEmpty)
+                      _buildEmptySearchWidget(context)
+                    else
+                      ...filteredElements.map(
+                        (e) => SimpleDialogOption(
+                          child: _buildOption(e),
+                          onPressed: () {
+                            _selectItem(e);
+                          },
                         ),
-                  if (filteredElements.isEmpty)
-                    _buildEmptySearchWidget(context)
-                  else
-                    ...filteredElements.map(
-                      (e) => SimpleDialogOption(
-                        child: _buildOption(e),
-                        onPressed: () {
-                          _selectItem(e);
-                        },
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(height: 100),
+              SizedBox(height: 20),
             ],
           ),
         ),
