@@ -139,7 +139,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                     ),
                 ],
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 100),
             ],
           ),
         ),
